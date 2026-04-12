@@ -21,7 +21,7 @@ model Article {
   title   String
   slug    String @unique
   excerpt String // Ringkasan singkat (muncul di list & meta description)
-  content String // Konten utama dalam format Markdown
+  content String @db.LongText // Konten utama dalam format Markdown
   cover   String // URL gambar cover
   coverImageId String?
   coverImage   MediaImage? @relation("ArticleCover", fields: [coverImageId], references: [id])
