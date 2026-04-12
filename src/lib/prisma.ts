@@ -2,18 +2,12 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
-
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
 function createPrismaClient() {
-  if (!process.env.DATABASE_URL) {
-    // Return standard client as fallback during CI/CD build environments
-    return new PrismaClient();
-  }
-
-  const url = new URL(process.env.DATABASE_URL);
+  const url = new URL(process.env.DATABASE_URL!);
 
   const adapter = new PrismaMariaDb({
     host: url.hostname,
