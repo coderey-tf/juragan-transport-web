@@ -32,7 +32,7 @@ jobs:
           DATABASE_URL: "mysql://dummy:dummy@127.0.0.1:3306/dummy"
 
       - name: 🗜️ Compress Build Files
-        run: tar -czf deploy.tar.gz .next public src package.json pnpm-lock.yaml prisma next.config.ts tsconfig.json tailwind.config.ts postcss.config.mjs components.json
+        run: tar -czf deploy.tar.gz .next public src package.json pnpm-lock.yaml pnpm-workspace.yaml prisma next.config.ts tsconfig.json postcss.config.mjs prisma.config.ts
 
       - name: 📤 Upload Build to VPS
         uses: appleboy/scp-action@v0.1.7
