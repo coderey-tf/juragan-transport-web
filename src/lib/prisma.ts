@@ -8,7 +8,12 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createPrismaClient() {
-  const url = new URL(process.env.DATABASE_URL!);
+  if (!process.env.DATABASE_URL) {
+    // Return standard client as fallback during CI/CD build environments
+    return new PrismaClient();
+  }
+
+  const url = new URL(process.env.DATABASE_URL);
 
   const adapter = new PrismaMariaDb({
     host: url.hostname,
