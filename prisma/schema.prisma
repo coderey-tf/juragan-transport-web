@@ -1,0 +1,230 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ──────────────────────────────────────────────
+// Artikel / Blog Post
+// ──────────────────────────────────────────────
+model Article {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Core Content
+  title   String
+  slug    String @unique
+  excerpt String // Ringkasan singkat (muncul di list & meta description)
+  content String // Konten utama dalam format Markdown
+  cover   String // URL gambar cover
+  coverImageId String?
+  coverImage   MediaImage? @relation("ArticleCover", fields: [coverImageId], references: [id])
+
+  // Author & Meta
+  author   String @default("Admin Juragan")
+  readTime String @default("5 menit")
+
+  // Status
+  published Boolean  @default(false)
+  publishedAt DateTime?
+
+  // SEO Fields
+  metaTitle       String?  // Judul khusus untuk tag <title> (jika beda dari title)
+  metaDescription String?  // Deskripsi khusus untuk <meta name="description">
+  metaKeywords    String?  // Comma-separated keywords untuk <meta name="keywords">
+  ogImage         String?  // URL gambar Open Graph (jika beda dari cover)
+  canonicalUrl    String?  // Canonical URL jika konten duplikat
+
+  // Relasi
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  tags       ArticleTag[]
+
+  @@index([slug])
+  @@index([published, publishedAt])
+  @@index([categoryId])
+}
+
+// ──────────────────────────────────────────────
+// Galeri Foto
+// ──────────────────────────────────────────────
+model GalleryItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Core
+  src     String // URL / path gambar
+  alt     String // Alt text (penting untuk SEO image search)
+  caption String? // Caption opsional untuk di bawah gambar
+  imageId    String?
+  mediaImage MediaImage? @relation("GalleryImage", fields: [imageId], references: [id])
+
+  // SEO Fields
+  title       String? // Title attribute untuk tooltip & SEO
+  description String? // Deskripsi panjang untuk schema markup
+
+  // Organization
+  sortOrder Int     @default(0) // Untuk urutan manual
+  featured  Boolean @default(false) // Tandai foto unggulan
+
+  // Relasi
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId])
+  @@index([featured])
+  @@index([sortOrder])
+}
+
+// ──────────────────────────────────────────────
+// Kategori (Shared: Artikel & Galeri)
+// ──────────────────────────────────────────────
+model Category {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name        String @unique
+  slug        String @unique
+  type        String // "article" | "gallery"
+  description String? // Deskripsi kategori untuk halaman arsip
+
+  // SEO Fields
+  metaTitle       String?
+  metaDescription String?
+
+  // Relasi
+  articles     Article[]
+  galleryItems GalleryItem[]
+
+  @@index([type])
+  @@index([slug])
+}
+
+// ──────────────────────────────────────────────
+// Tag (untuk Artikel, membantu SEO internal linking)
+// ──────────────────────────────────────────────
+model Tag {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  name String @unique
+  slug String @unique
+
+  articles ArticleTag[]
+
+  @@index([slug])
+}
+
+// ──────────────────────────────────────────────
+// Pivot Table: Article <-> Tag (Many-to-Many)
+// ──────────────────────────────────────────────
+model ArticleTag {
+  articleId String
+  tagId     String
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, tagId])
+}
+
+// ──────────────────────────────────────────────
+// Armada / Fleet
+// ──────────────────────────────────────────────
+model Fleet {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Core
+  name  String  @unique
+  slug  String  @unique
+  badge  String? // Label badge seperti "Terlaris!", "Premium", dll
+  image  String  // URL gambar utama
+  imageId     String?
+  mediaImage  MediaImage? @relation("FleetImage", fields: [imageId], references: [id])
+
+  // Display Settings
+  flip       Boolean @default(false)  // Mirror image horizontally
+  imageClass String  @default("")     // Custom Tailwind classes untuk posisi gambar
+  sortOrder  Int     @default(0)      // Urutan tampil di website
+
+  // Detail (untuk halaman detail armada ke depannya)
+  description String? // Deskripsi armada
+  seats       Int?    // Jumlah kursi
+  transmission String? // "Manual" | "Automatic"
+  year        Int?    // Tahun kendaraan
+
+  // SEO Fields
+  metaTitle       String?
+  metaDescription String?
+
+  // Status
+  active Boolean @default(true) // Tampilkan di website atau tidak
+
+  @@index([slug])
+  @@index([active, sortOrder])
+}
+
+// ──────────────────────────────────────────────
+// Testimoni Pelanggan
+// ──────────────────────────────────────────────
+model Testimonial {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Core
+  name     String  // Nama pelanggan
+  role     String  // Jabatan / profesi
+  content  String  // Isi testimoni
+  avatar   String? // URL foto pelanggan (opsional)
+  initials String  // Inisial (fallback jika tidak ada avatar)
+  rating   Int     @default(5) // Rating 1-5
+
+  // Display
+  featured  Boolean @default(false) // Tampilkan di homepage
+  sortOrder Int     @default(0)
+
+  @@index([featured])
+}
+
+// ──────────────────────────────────────────────
+// Pengaturan Website / Site Settings
+// ──────────────────────────────────────────────
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+  type  String @default("text") // "text" | "image" | "json"
+
+  @@index([key])
+}
+
+// ──────────────────────────────────────────────
+// Media Image (Cloudinary)
+// ──────────────────────────────────────────────
+model MediaImage {
+  id        String   @id @default(cuid())
+  publicId  String   @unique
+  secureUrl String
+  width     Int?
+  height    Int?
+  format    String?
+  folder    String?
+  alt       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  articles  Article[]     @relation("ArticleCover")
+  fleets    Fleet[]       @relation("FleetImage")
+  galleries GalleryItem[] @relation("GalleryImage")
+}
