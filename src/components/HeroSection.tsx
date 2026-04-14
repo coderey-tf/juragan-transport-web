@@ -1,9 +1,30 @@
+"use client";
+
 import Image from "next/image";
 import { FLEETS } from "@/data/fleets";
+import { FormEvent } from "react";
 
 export default function HeroSection() {
+  const handleBookingSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const departure = formData.get("departure") as string;
+    const returnDate = formData.get("return") as string;
+    const armada = formData.get("armada") as string;
+    const service = formData.get("service") as string;
+
+    if (!name.trim()) return;
+
+    const message = `Halo Admin Juragan Rental,\n\nSaya tertarik untuk *Booking Kendaraan* dengan rincian berikut:\n\n *Nama           :* ${name}\n *Tgl Berangkat  :* ${departure || "-"}\n *Tgl Kembali    :* ${returnDate || "-"}\n *Armada         :* ${armada || "Belum Menentukan"}\n *Jenis Layanan  :* ${service || "-"}\n\nMohon informasi ketersediaan unit dan estimasi biayanya ya. Terima kasih!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/6282132213259?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
   return (
-    <section className="relative min-h-svh flex items-center pt-10  md:pt-10  overflow-hidden">
+    <section className="relative min-h-svh flex items-center pt-28 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           alt="Premium Car Service with Professional Driver"
@@ -16,7 +37,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div className="text-white space-y-5 md:space-y-6 text-center lg:text-left">
+        <div className="text-white space-y-4 md:space-y-6 text-center lg:text-left mt-6 lg:mt-0">
           <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold font-headline leading-[1.2] lg:leading-[1.15] tracking-tight drop-shadow-lg max-w-2xl mx-auto lg:mx-0">
             Perjalanan Nyaman <br className="hidden xl:block" />
             Bersama <span className="text-secondary">Sopir Profesional</span>
@@ -27,19 +48,21 @@ export default function HeroSection() {
             perjalanan dinas Anda.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-3 justify-center lg:justify-start">
-            <button
+            <a
+              href="#armada"
               aria-label="Lihat Armada"
-              className="bg-secondary text-black px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:translate-y-[-2px] hover:shadow-xl transition-all"
+              className="bg-gradient-to-r from-secondary to-[#F9A826] text-black px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#F5C518]/40 shadow-lg shadow-[#F5C518]/20 transition-all duration-300"
             >
               Lihat Armada
               <span className="material-symbols-outlined text-xl">
                 arrow_forward
               </span>
-            </button>
+            </a>
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6282132213259"
               aria-label="Hubungi via WhatsApp"
-              className="bg-[#25D366] text-white px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:translate-y-[-2px] transition-all shadow-lg hover:shadow-xl"
+              target="_blank"
+              className="bg-gradient-to-r from-[#25D366] to-[#1DA851] text-white px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:-translate-y-0.5 shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300"
             >
               <span
                 className="material-symbols-outlined text-xl"
@@ -57,7 +80,7 @@ export default function HeroSection() {
           <h2 className="text-2xl font-bold font-headline text-white mb-6">
             Pesan Perjalanan Anda
           </h2>
-          <form className="space-y-1">
+          <form className="space-y-1" onSubmit={handleBookingSubmit}>
             <div className="space-y-1">
               <label
                 htmlFor="name"
@@ -67,6 +90,8 @@ export default function HeroSection() {
               </label>
               <input
                 id="name"
+                name="name"
+                required
                 className="w-full bg-white/90 text-black border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#F5C518] transition-all shadow-inner hover:bg-white"
                 placeholder="Masukkan nama Anda"
                 type="text"
@@ -82,6 +107,7 @@ export default function HeroSection() {
                 </label>
                 <input
                   id="departure"
+                  name="departure"
                   className="w-full bg-white/90 text-black border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#F5C518] transition-all shadow-inner hover:bg-white"
                   type="date"
                 />
@@ -95,6 +121,7 @@ export default function HeroSection() {
                 </label>
                 <input
                   id="return"
+                  name="return"
                   className="w-full bg-white/90 text-black border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#F5C518] transition-all shadow-inner hover:bg-white"
                   type="date"
                 />
@@ -109,6 +136,7 @@ export default function HeroSection() {
               </label>
               <select
                 id="sel_armada"
+                name="armada"
                 className="w-full bg-white/90 text-black border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary transition-all appearance-none shadow-inner hover:bg-white text-sm"
               >
                 <option value="">Pilih Armada...</option>
@@ -128,17 +156,20 @@ export default function HeroSection() {
               </label>
               <select
                 id="service"
+                name="service"
                 className="w-full bg-white/90 text-black border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary transition-all appearance-none shadow-inner hover:bg-white text-sm"
               >
-                <option>Dalam Kota Surabaya</option>
-                <option>Luar Kota / Drop-off</option>
-                <option>Paket Wisata</option>
-                <option>Airport Transfer</option>
+                <option value="Dalam Kota Surabaya">Dalam Kota Surabaya</option>
+                <option value="Luar Kota / Drop-off">
+                  Luar Kota / Drop-off
+                </option>
+                <option value="Paket Wisata">Paket Wisata</option>
+                <option value="Airport Transfer">Airport Transfer</option>
               </select>
             </div>
             <button
-              type="button"
-              className="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold mt-6 flex justify-center items-center gap-2 hover:brightness-110 shadow-lg hover:shadow-xl transition-all"
+              type="submit"
+              className="w-full bg-gradient-to-r from-[#25D366] to-[#1DA851] text-white py-4 rounded-xl font-bold mt-6 flex justify-center items-center gap-2 shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:-translate-y-0.5 hover:brightness-110 transition-all duration-300"
             >
               Kirim via WhatsApp
             </button>

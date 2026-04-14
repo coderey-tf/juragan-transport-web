@@ -11,10 +11,10 @@ export default function Footer() {
             Juragan Rental Surabaya
           </h2>
           <p className="text-on-surface-variant mb-6 md:mb-8 leading-relaxed">
-            Penyedia jasa sewa mobil dan driver premium di Surabaya
-            terpercaya. Kenyamanan Anda adalah rute utama kami.
+            Penyedia jasa sewa mobil dan driver premium di Surabaya terpercaya.
+            Kenyamanan Anda adalah rute utama kami.
           </p>
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             <a
               aria-label="Instagram"
               className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1"
@@ -31,7 +31,7 @@ export default function Footer() {
             >
               <span className="material-symbols-outlined">photo_camera</span>
             </a>
-          </div>
+          </div> */}
         </div>
         <div>
           <h3 className="text-lg font-bold font-headline text-primary mb-4 md:mb-6">
@@ -94,22 +94,32 @@ export default function Footer() {
                 location_on
               </span>
               <span>
-                Jl. Raya Surabaya No. 123
+                Jl. Medokan Sawah Timur IX C, Medokan Ayu
                 <br />
-                Jawa Timur, Indonesia
+                Kec. Rangkut, Surabaya
+              </span>
+            </li>
+            <li className="flex gap-3 text-gray-600 font-medium items-start">
+              <span className="material-symbols-outlined text-primary mt-0.5">
+                location_on
+              </span>
+              <span>
+                Jl. H. Anwar Hamza, Kp. Baru Tambak Oso Waru
+                <br />
+                Tambakoso, Sidoarjo
               </span>
             </li>
             <li className="flex gap-3 text-gray-600 font-medium items-center">
               <span className="material-symbols-outlined text-primary">
                 phone
               </span>
-              +62 812-3456-7890
+              +62 821-3221-3259
             </li>
             <li className="flex gap-3 text-gray-600 font-medium items-center">
               <span className="material-symbols-outlined text-primary">
                 mail
               </span>
-              halo@juragantransport.com
+              halo@juraganrentalsurabaya.com
             </li>
           </ul>
         </div>

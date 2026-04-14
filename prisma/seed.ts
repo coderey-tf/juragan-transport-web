@@ -506,7 +506,7 @@ async function main() {
   const settings = [
     { key: "site_name", value: "Juragan Rental Surabaya" },
     { key: "site_tagline", value: "Sewa Mobil & Driver Premium" },
-    { key: "whatsapp_number", value: "6281234567890" },
+    { key: "whatsapp_number", value: "6282132213259" },
     { key: "phone_number", value: "+62 812-3456-7890" },
     { key: "email", value: "halo@juragantransport.com" },
     {

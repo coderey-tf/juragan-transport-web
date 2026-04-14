@@ -114,8 +114,8 @@ export default function LayananSection() {
               <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border-4 border-secondary/20 rounded-3xl z-0 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-xl aspect-[4/3] w-full">
                 <Image
-                  alt="Paket Wisata Keluarga"
-                  src="/images/pengantin.jpeg"
+                  alt="Layanan Antar Jemput Bandara Juanda"
+                  src="/images/with-driver.jpeg"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -125,24 +125,33 @@ export default function LayananSection() {
             <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
               <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 text-primary rounded-full font-bold text-xs md:text-sm uppercase tracking-widest">
                 <span className="material-symbols-outlined text-lg">
-                  travel_explore
+                  flight_land
                 </span>
-                Paket Wisata Eksklusif
+                Antar Jemput Eksekutif
               </div>
               <h3 className="text-2xl md:text-3xl font-bold font-headline text-on-surface">
-                Wisata &amp; Liburan
+                Airport Transfer
               </h3>
               <p className="text-on-surface-variant text-base md:text-lg leading-relaxed">
-                Ciptakan momen tak terlupakan bersama keluarga di destinasi
-                wisata terbaik Jawa Timur. Kami menyediakan paket khusus untuk
-                Bromo, Batu, dan kawah Ijen.
+                Layanan asisten perjalanan istimewa dari dan menuju Bandara
+                Internasional Juanda atau stasiun kereta. Kami senantiasa
+                memantau jadwal kedatangan Anda demi kepastian penjemputan tanpa
+                harus menunggu sedetik pun.
               </p>
-              <button className="text-primary font-bold flex items-center gap-2 group mt-4 hover:bg-primary/5 px-4 py-3 rounded-xl transition-colors">
-                Lihat Katalog Wisata{" "}
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-                  arrow_right_alt
-                </span>
-              </button>
+              <ul className="space-y-3 pt-2">
+                <li className="flex items-center gap-3 font-medium text-on-surface border-b pb-2">
+                  <span className="material-symbols-outlined text-primary shadow-sm bg-primary/5 rounded-full p-1">
+                    check_circle
+                  </span>{" "}
+                  Penjemputan on-time (terpantau)
+                </li>
+                <li className="flex items-center gap-3 font-medium text-on-surface border-b pb-2">
+                  <span className="material-symbols-outlined text-primary shadow-sm bg-primary/5 rounded-full p-1">
+                    check_circle
+                  </span>{" "}
+                  Bantuan penanganan bagasi gratis
+                </li>
+              </ul>
             </div>
           </article>
         </div>

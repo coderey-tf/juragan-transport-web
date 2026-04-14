@@ -67,17 +67,26 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm">
       <div className="flex justify-between items-center px-4 md:px-8 py-4 max-w-7xl mx-auto w-full bg-white/50 backdrop-blur-md relative z-20">
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image
-            src="/images/logo.png"
-            alt="Juragan Rental Surabaya"
-            width={40}
-            height={40}
-            className="w-10 h-10 object-contain group-active:scale-95 transition-transform"
-          />
-          <span className="text-xl md:text-2xl font-bold tracking-tight text-[#1A4FB5] font-headline hidden sm:block">
-            Juragan Rental
-          </span>
+        <Link
+          href="/"
+          className="flex items-center gap-3 md:gap-4 group cursor-pointer"
+        >
+          <div className="relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 bg-gradient-to-br from-[#1A4FB5] via-blue-600 to-blue-400 rounded-xl shadow-lg shadow-blue-500/30 group-active:scale-95 transition-all border border-blue-200">
+            <Image
+              src="/images/logo-removebg-preview.png"
+              alt="Juragan Rental Surabaya"
+              fill
+              className="object-contain p-2 drop-shadow-sm"
+            />
+          </div>
+          <div className="hidden sm:flex flex-col justify-center">
+            <span className="text-xl md:text-2xl font-black tracking-tight bg-gradient-to-r from-[#1A4FB5] to-blue-800 bg-clip-text text-transparent font-headline leading-none pb-0.5">
+              Juragan Rental
+            </span>
+            <span className="text-[0.65rem] md:text-xs font-bold tracking-widest text-[#F9A826] uppercase leading-none mt-1">
+              Surabaya
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
@@ -96,8 +105,9 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://wa.me/6281234567890"
-            className="bg-primary hover:bg-[#154091] text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 active:scale-95"
+            href="https://wa.me/6282132213259"
+            target="_blank"
+            className="bg-gradient-to-r from-primary to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40 text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 active:scale-95 hover:-translate-y-0.5"
           >
             Pesan Sekarang
           </a>
@@ -133,8 +143,9 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://wa.me/6281234567890"
-            className="bg-primary text-center text-white w-full py-4 mt-4 rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-transform"
+            href="https://wa.me/6282132213259"
+            target="_blank"
+            className="bg-gradient-to-r from-primary to-blue-500 text-center text-white w-full py-4 mt-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-500/30 active:scale-95 transition-transform"
           >
             Pesan Sekarang
           </a>

@@ -51,64 +51,62 @@ export default async function ArtikelDetailPage({ params }: Props) {
 
   // Simple markdown-like rendering for content
   const renderContent = (content: string) => {
-    return content
-      .split("\n")
-      .map((line, i) => {
-        const trimmed = line.trim();
-        if (!trimmed) return <br key={i} />;
-        if (trimmed.startsWith("### "))
-          return (
-            <h3
-              key={i}
-              className="text-xl md:text-2xl font-bold font-headline text-on-surface mt-10 mb-4"
-            >
-              {trimmed.slice(4)}
-            </h3>
-          );
-        if (trimmed.startsWith("## "))
-          return (
-            <h2
-              key={i}
-              className="text-2xl md:text-3xl font-bold font-headline text-primary mt-12 mb-5"
-            >
-              {trimmed.slice(3)}
-            </h2>
-          );
-        if (trimmed.startsWith("---"))
-          return <hr key={i} className="my-10 border-gray-200" />;
-        if (trimmed.startsWith("- "))
-          return (
-            <li
-              key={i}
-              className="text-on-surface-variant leading-relaxed ml-4 list-disc"
-            >
-              {trimmed.slice(2)}
-            </li>
-          );
-        if (trimmed.startsWith("**") && trimmed.endsWith("**"))
-          return (
-            <p key={i} className="font-bold text-on-surface mt-6 mb-2">
-              {trimmed.slice(2, -2)}
-            </p>
-          );
-        if (trimmed.startsWith("*") && trimmed.endsWith("*"))
-          return (
-            <p
-              key={i}
-              className="italic text-on-surface-variant mt-4 bg-primary/5 p-4 rounded-xl border-l-4 border-primary"
-            >
-              {trimmed.slice(1, -1)}
-            </p>
-          );
+    return content.split("\n").map((line, i) => {
+      const trimmed = line.trim();
+      if (!trimmed) return <br key={i} />;
+      if (trimmed.startsWith("### "))
+        return (
+          <h3
+            key={i}
+            className="text-xl md:text-2xl font-bold font-headline text-on-surface mt-10 mb-4"
+          >
+            {trimmed.slice(4)}
+          </h3>
+        );
+      if (trimmed.startsWith("## "))
+        return (
+          <h2
+            key={i}
+            className="text-2xl md:text-3xl font-bold font-headline text-primary mt-12 mb-5"
+          >
+            {trimmed.slice(3)}
+          </h2>
+        );
+      if (trimmed.startsWith("---"))
+        return <hr key={i} className="my-10 border-gray-200" />;
+      if (trimmed.startsWith("- "))
+        return (
+          <li
+            key={i}
+            className="text-on-surface-variant leading-relaxed ml-4 list-disc"
+          >
+            {trimmed.slice(2)}
+          </li>
+        );
+      if (trimmed.startsWith("**") && trimmed.endsWith("**"))
+        return (
+          <p key={i} className="font-bold text-on-surface mt-6 mb-2">
+            {trimmed.slice(2, -2)}
+          </p>
+        );
+      if (trimmed.startsWith("*") && trimmed.endsWith("*"))
         return (
           <p
             key={i}
-            className="text-on-surface-variant leading-relaxed text-base md:text-lg"
+            className="italic text-on-surface-variant mt-4 bg-primary/5 p-4 rounded-xl border-l-4 border-primary"
           >
-            {trimmed}
+            {trimmed.slice(1, -1)}
           </p>
         );
-      });
+      return (
+        <p
+          key={i}
+          className="text-on-surface-variant leading-relaxed text-base md:text-lg"
+        >
+          {trimmed}
+        </p>
+      );
+    });
   };
 
   return (
@@ -174,9 +172,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
                 className="p-2.5 rounded-xl bg-white border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all"
                 aria-label="Bagikan"
               >
-                <span className="material-symbols-outlined text-xl">
-                  share
-                </span>
+                <span className="material-symbols-outlined text-xl">share</span>
               </button>
             </div>
           </div>
@@ -196,7 +192,8 @@ export default async function ArtikelDetailPage({ params }: Props) {
               terbaik untuk perjalanan Anda.
             </p>
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6282132213259"
+              target="_blank"
               className="inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-3.5 rounded-xl font-bold hover:brightness-110 shadow-lg transition-all"
             >
               <span className="material-symbols-outlined" data-weight="fill">
@@ -241,7 +238,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
                                 day: "numeric",
                                 month: "short",
                                 year: "numeric",
-                              }
+                              },
                             )
                           : ""}{" "}
                         · {rel.readTime}
@@ -263,9 +260,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
                 href="/artikel"
                 className="inline-flex items-center gap-2 text-primary font-bold hover:bg-primary/5 px-6 py-3 rounded-xl transition-colors"
               >
-                <span className="material-symbols-outlined">
-                  arrow_back
-                </span>
+                <span className="material-symbols-outlined">arrow_back</span>
                 Kembali ke Semua Artikel
               </Link>
             </div>

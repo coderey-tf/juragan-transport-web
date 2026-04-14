@@ -19,7 +19,7 @@ export default function CTABanner() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
             <button
               aria-label="Booking Online"
-              className="bg-secondary text-black px-6 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl inline-flex items-center justify-center gap-3 transition-all hover:scale-105 shadow-xl hover:shadow-secondary/30"
+              className="bg-gradient-to-r from-secondary to-[#F9A826] text-black px-6 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl inline-flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 shadow-xl shadow-[#F5C518]/20 hover:shadow-2xl hover:shadow-[#F5C518]/40"
             >
               <span className="material-symbols-outlined text-2xl">
                 calendar_month
@@ -27,9 +27,10 @@ export default function CTABanner() {
               Booking Online
             </button>
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6282132213259"
               aria-label="Chat WhatsApp"
-              className="bg-[#25D366] text-white px-6 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl inline-flex items-center justify-center gap-3 transition-all hover:scale-105 shadow-xl hover:shadow-[#25D366]/30"
+              target="_blank"
+              className="bg-gradient-to-r from-[#25D366] to-[#1DA851] text-white px-6 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl inline-flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 shadow-xl shadow-[#25D366]/30 hover:shadow-2xl hover:shadow-[#25D366]/40"
             >
               <span
                 className="material-symbols-outlined text-2xl md:text-3xl"

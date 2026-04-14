@@ -20,6 +20,7 @@
     "@prisma/adapter-mariadb": "^7.7.0",
     "@prisma/client": "^7.7.0",
     "cloudinary": "^2.9.0",
+    "framer-motion": "^12.38.0",
     "mariadb": "^3.5.2",
     "next": "16.2.2",
     "prisma": "^7.7.0",
