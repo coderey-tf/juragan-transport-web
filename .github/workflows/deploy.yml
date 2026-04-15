@@ -60,7 +60,7 @@ jobs:
             
             # Install modul untuk production & generate prisma
             npm install -g pnpm
-            pnpm install --prod
+            pnpm install 
             pnpm build
             # Migrate Database
             pnpm run db:migrate
