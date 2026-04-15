@@ -192,7 +192,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
               terbaik untuk perjalanan Anda.
             </p>
             <a
-              href="https://wa.me/6282132213259"
+              href="https://wa.me/6282132213259?text=Halo%20Admin%20Juragan%20Rental%2C%0A%0ASaya%20tertarik%20untuk%20Booking%20Kendaraan%20dengan%20rincian%20berikut%3A%0A%0A%20Nama%20%20%20%20%20%20%20%20%20%20%20%3A%20%0A%20Tgl%20Berangkat%20%20%3A%20%0A%20Tgl%20Kembali%20%20%20%20%3A%20%0A%20Armada%20%20%20%20%20%20%20%20%20%3A%20%0A%20Jenis%20Layanan%20%20%3A%20%0A%0AMohon%20informasi%20ketersediaan%20unit%20dan%20estimasi%20biayanya%20ya.%20Terima%20kasih!"
               target="_blank"
               className="inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-3.5 rounded-xl font-bold hover:brightness-110 shadow-lg transition-all"
             >

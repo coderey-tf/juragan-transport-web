@@ -25,7 +25,7 @@ export default function LayananSection() {
                   alt="Transportasi Dalam Kota Surabaya"
                   src="/images/with-driver2.jpeg"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -71,7 +71,7 @@ export default function LayananSection() {
                   alt="Perjalanan Ke Luar Kota"
                   src="/images/mobil-banyak.jpeg"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -117,7 +117,7 @@ export default function LayananSection() {
                   alt="Layanan Antar Jemput Bandara Juanda"
                   src="/images/with-driver.jpeg"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>

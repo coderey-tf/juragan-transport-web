@@ -102,6 +102,7 @@ export default function ImageUpload({
             src={preview}
             alt="Preview"
             fill
+            sizes="(max-width: 768px) 100vw, 33vw"
             className={`object-cover ${uploading ? "opacity-50 blur-sm" : ""}`}
             onError={() => {
               setPreview(null);

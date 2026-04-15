@@ -9,8 +9,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const path = usePathname();
-  console.log("path", path);
-  console.log("activeSection", activeSection);
 
   useEffect(() => {
     const sections = ["armada", "layanan", "tentang", "testimoni", "kontak"];
@@ -76,6 +74,7 @@ export default function Navbar() {
               src="/images/logo-removebg-preview.png"
               alt="Juragan Rental Surabaya"
               fill
+              sizes="48px"
               className="object-contain p-2 drop-shadow-sm"
             />
           </div>
@@ -105,8 +104,9 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://wa.me/6282132213259"
+            href="https://wa.me/6282132213259?text=Halo%20Admin%20Juragan%20Rental%2C%0A%0ASaya%20tertarik%20untuk%20Booking%20Kendaraan%20dengan%20rincian%20berikut%3A%0A%0A%20Nama%20%20%20%20%20%20%20%20%20%20%20%3A%20%0A%20Tgl%20Berangkat%20%20%3A%20%0A%20Tgl%20Kembali%20%20%20%20%3A%20%0A%20Armada%20%20%20%20%20%20%20%20%20%3A%20%0A%20Jenis%20Layanan%20%20%3A%20%0A%0AMohon%20informasi%20ketersediaan%20unit%20dan%20estimasi%20biayanya%20ya.%20Terima%20kasih!"
             target="_blank"
+            aria-label="Pesan Sekarang via WhatsApp"
             className="bg-gradient-to-r from-primary to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40 text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 active:scale-95 hover:-translate-y-0.5"
           >
             Pesan Sekarang
@@ -143,8 +143,9 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://wa.me/6282132213259"
+            href="https://wa.me/6282132213259?text=Halo%20Admin%20Juragan%20Rental%2C%0A%0ASaya%20tertarik%20untuk%20Booking%20Kendaraan%20dengan%20rincian%20berikut%3A%0A%0A%20Nama%20%20%20%20%20%20%20%20%20%20%20%3A%20%0A%20Tgl%20Berangkat%20%20%3A%20%0A%20Tgl%20Kembali%20%20%20%20%3A%20%0A%20Armada%20%20%20%20%20%20%20%20%20%3A%20%0A%20Jenis%20Layanan%20%20%3A%20%0A%0AMohon%20informasi%20ketersediaan%20unit%20dan%20estimasi%20biayanya%20ya.%20Terima%20kasih!"
             target="_blank"
+            aria-label="Pesan Sekarang via WhatsApp"
             className="bg-gradient-to-r from-primary to-blue-500 text-center text-white w-full py-4 mt-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-500/30 active:scale-95 transition-transform"
           >
             Pesan Sekarang

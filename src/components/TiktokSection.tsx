@@ -1,25 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function TiktokSection() {
   const [isClient, setIsClient] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsClient(true);
-    // Inject the TikTok official embed script safely
-    if (!document.getElementById("tiktok-embed-script")) {
-      const script = document.createElement("script");
-      script.id = "tiktok-embed-script";
-      script.src = "https://www.tiktok.com/embed.js";
-      script.async = true;
-      document.body.appendChild(script);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsClient(true);
+          // Inject TikTok embed script only when section is visible
+          if (!document.getElementById("tiktok-embed-script")) {
+            const script = document.createElement("script");
+            script.id = "tiktok-embed-script";
+            script.src = "https://www.tiktok.com/embed.js";
+            script.async = true;
+            document.body.appendChild(script);
+          }
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       id="kontak"
+      ref={sectionRef}
       className="relative py-20 lg:py-28 bg-gradient-to-b from-white via-blue-50/40 to-[#f4f7fc] overflow-hidden"
     >
       {/* Decorative Background Elements */}
@@ -53,6 +69,7 @@ export default function TiktokSection() {
                   className="w-7 h-7 text-white drop-shadow-md"
                   fill="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 006.34 16c0 3.5 2.83 6.33 6.33 6.33A6.33 6.33 0 0019 16v-6.02a8.55 8.55 0 004.85 1.54v-3.46a4.8 4.8 0 01-4.26-1.37z" />
                 </svg>
@@ -103,6 +120,7 @@ export default function TiktokSection() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -136,6 +154,7 @@ export default function TiktokSection() {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                title="Lokasi Garasi Juragan Rental Surabaya di Google Maps"
               ></iframe>
             </div>
           </div>

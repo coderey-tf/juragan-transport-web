@@ -12,6 +12,8 @@ export default function KeunggulanSection() {
           className="object-cover object-center mix-blend-overlay opacity-20"
           src="/images/team-juragan.jpeg"
           fill
+          sizes="100vw"
+          priority
         />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

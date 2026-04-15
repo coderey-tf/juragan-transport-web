@@ -5,12 +5,14 @@ import "./globals.css";
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,6 +40,13 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
     >
       <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
