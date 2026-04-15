@@ -27,7 +27,6 @@ export default function TiktokSection() {
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[80px] pointer-events-none"></div>
 
       <div className="relative z-10 px-4 md:px-8 mx-auto w-full max-w-7xl flex flex-col items-center justify-center">
-        
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16 space-y-4">
           <div className="inline-block px-5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-primary font-bold text-sm tracking-widest uppercase shadow-sm">
@@ -40,12 +39,12 @@ export default function TiktokSection() {
             </span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Kunjungi kantor kami untuk layanan langsung atau ikuti keseruan perjalanan kami melalui media sosial.
+            Kunjungi kantor kami untuk layanan langsung atau ikuti keseruan
+            perjalanan kami melalui media sosial.
           </p>
         </div>
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch justify-center">
-          
           {/* TikTok Column */}
           <div className="w-full flex flex-col bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden transform transition duration-500 hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)]">
             <div className="bg-gradient-to-r from-gray-900 to-black p-5 flex items-center justify-between">
@@ -130,15 +129,16 @@ export default function TiktokSection() {
             </div>
             <div className="flex-grow w-full h-[400px] lg:h-auto min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d349.7563227656891!2d112.80460306575263!3d-7.3492838429417615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e50036793ff9%3A0x38c01f6fa48b409f!2sAgen%20Sewa%20mobil%20juragan%20rent%20car%20nusantara!5e0!3m2!1sid!2sid!4v1775988493807!5m2!1sid!2sid"
-                className="w-full h-full border-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.04104441837!2d112.80468099999999!3d-7.349287999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e50036793ff9%3A0x38c01f6fa48b409f!2sAgen%20Sewa%20mobil%20juragan%20rent%20car%20nusantara!5e0!3m2!1sid!2sid!4v1776243727696!5m2!1sid!2sid"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
-          
         </div>
       </div>
     </section>
