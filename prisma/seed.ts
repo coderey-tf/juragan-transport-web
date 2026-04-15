@@ -127,10 +127,10 @@ async function main() {
     update: {},
     create: { name: "Jawa Timur", slug: "jawa-timur" },
   });
-  const tagSopir = await prisma.tag.upsert({
-    where: { slug: "sopir-profesional" },
+  const tagDriver = await prisma.tag.upsert({
+    where: { slug: "driver-profesional" },
     update: {},
-    create: { name: "Sopir Profesional", slug: "sopir-profesional" },
+    create: { name: "Driver Profesional", slug: "driver-profesional" },
   });
   const tagAirport = await prisma.tag.upsert({
     where: { slug: "airport-transfer" },
@@ -149,7 +149,7 @@ async function main() {
       slug: "tips-sewa-mobil-surabaya",
       excerpt:
         "Menyewa mobil di Surabaya bisa jadi pengalaman yang menyenangkan jika Anda tahu cara memilih layanan yang tepat. Berikut tips lengkapnya.",
-      content: `## Mengapa Sewa Mobil di Surabaya?\n\nSurabaya sebagai kota metropolitan terbesar kedua di Indonesia memiliki mobilitas tinggi. Baik untuk keperluan bisnis maupun wisata, menyewa mobil dengan sopir profesional adalah pilihan cerdas.\n\n### 1. Pilih Penyedia Terpercaya\n\nPastikan Anda memilih rental mobil yang sudah memiliki reputasi baik. Cek ulasan pelanggan di Google atau media sosial.\n\n### 2. Periksa Kondisi Armada\n\nSebelum berangkat, pastikan kendaraan dalam kondisi prima.\n\n### 3. Konfirmasi Rute dan Jadwal\n\nKomunikasikan rute perjalanan Anda dengan jelas kepada driver.\n\n### 4. Pahami Sistem Pembayaran\n\nPastikan Anda memahami struktur biaya termasuk BBM, tol, dan parkir.\n\n### 5. Siapkan Dokumen Perjalanan\n\nUntuk perjalanan luar kota, pastikan membawa identitas diri.\n\n### 6. Manfaatkan Layanan 24/7\n\nJangan ragu menghubungi admin kapan saja.\n\n### 7. Booking Jauh Hari\n\nUntuk mendapatkan unit terbaik, disarankan melakukan pemesanan minimal 1-2 hari sebelum keberangkatan.`,
+      content: `## Mengapa Sewa Mobil di Surabaya?\n\nSurabaya sebagai kota metropolitan terbesar kedua di Indonesia memiliki mobilitas tinggi. Baik untuk keperluan bisnis maupun wisata, menyewa mobil dengan driver profesional adalah pilihan cerdas.\n\n### 1. Pilih Penyedia Terpercaya\n\nPastikan Anda memilih rental mobil yang sudah memiliki reputasi baik. Cek ulasan pelanggan di Google atau media sosial.\n\n### 2. Periksa Kondisi Armada\n\nSebelum berangkat, pastikan kendaraan dalam kondisi prima.\n\n### 3. Konfirmasi Rute dan Jadwal\n\nKomunikasikan rute perjalanan Anda dengan jelas kepada driver.\n\n### 4. Pahami Sistem Pembayaran\n\nPastikan Anda memahami struktur biaya termasuk BBM, tol, dan parkir.\n\n### 5. Siapkan Dokumen Perjalanan\n\nUntuk perjalanan luar kota, pastikan membawa identitas diri.\n\n### 6. Manfaatkan Layanan 24/7\n\nJangan ragu menghubungi admin kapan saja.\n\n### 7. Booking Jauh Hari\n\nUntuk mendapatkan unit terbaik, disarankan melakukan pemesanan minimal 1-2 hari sebelum keberangkatan.`,
       cover: "/images/mobil-banyak.jpeg",
       author: "Admin Juragan",
       readTime: "5 menit",
@@ -196,14 +196,14 @@ async function main() {
   });
 
   await prisma.article.upsert({
-    where: { slug: "keuntungan-sewa-mobil-dengan-sopir" },
+    where: { slug: "keuntungan-sewa-mobil-dengan-driver" },
     update: {},
     create: {
-      title: "Keuntungan Sewa Mobil dengan Sopir vs Self-Drive di Surabaya",
-      slug: "keuntungan-sewa-mobil-dengan-sopir",
+      title: "Keuntungan Sewa Mobil dengan Driver vs Self-Drive di Surabaya",
+      slug: "keuntungan-sewa-mobil-dengan-driver",
       excerpt:
-        "Bingung memilih antara sewa mobil dengan sopir atau menyetir sendiri? Simak perbandingan lengkapnya.",
-      content: `## Sewa dengan Sopir atau Self-Drive?\n\nKetika merencanakan perjalanan di Surabaya, salah satu pertimbangan penting adalah apakah Anda akan menyetir sendiri atau menggunakan jasa sopir.\n\n### Keuntungan Sewa dengan Sopir\n\n**1. Bebas Stres di Jalan**\nAnda tidak perlu pusing dengan navigasi dan kemacetan.\n\n**2. Lebih Aman**\nSopir kami terlatih untuk berkendara secara aman dan defensif.\n\n**3. Fleksibilitas Tinggi**\nPerlu berhenti mendadak atau mengubah rute? Tidak masalah!\n\n### Kesimpulan\n\nUntuk mayoritas kebutuhan bisnis dan wisata, sewa mobil dengan sopir adalah pilihan terbaik.`,
+        "Bingung memilih antara sewa mobil dengan driver atau menyetir sendiri? Simak perbandingan lengkapnya.",
+      content: `## Sewa dengan Driver atau Self-Drive?\n\nKetika merencanakan perjalanan di Surabaya, salah satu pertimbangan penting adalah apakah Anda akan menyetir sendiri atau menggunakan jasa driver.\n\n### Keuntungan Sewa dengan Driver\n\n**1. Bebas Stres di Jalan**\nAnda tidak perlu pusing dengan navigasi dan kemacetan.\n\n**2. Lebih Aman**\nDriver kami terlatih untuk berkendara secara aman dan defensif.\n\n**3. Fleksibilitas Tinggi**\nPerlu berhenti mendadak atau mengubah rute? Tidak masalah!\n\n### Kesimpulan\n\nUntuk mayoritas kebutuhan bisnis dan wisata, sewa mobil dengan driver adalah pilihan terbaik.`,
       cover: "/images/with-driver2.jpeg",
       author: "Admin Juragan",
       readTime: "4 menit",
@@ -211,9 +211,9 @@ async function main() {
       publishedAt: new Date("2026-04-01"),
       categoryId: catInfo.id,
       metaKeywords:
-        "sewa mobil sopir surabaya, keuntungan rental dengan driver",
+        "sewa mobil driver surabaya, keuntungan rental dengan driver",
       tags: {
-        create: [{ tagId: tagSopir.id }, { tagId: tagRentalMobil.id }],
+        create: [{ tagId: tagDriver.id }, { tagId: tagRentalMobil.id }],
       },
     },
   });
@@ -226,7 +226,7 @@ async function main() {
       slug: "panduan-airport-transfer-surabaya",
       excerpt:
         "Tak perlu repot mencari transportasi dari bandara. Ini panduan airport transfer yang nyaman dan terpercaya.",
-      content: `## Airport Transfer Bandara Juanda\n\nBandara Internasional Juanda adalah pintu gerbang utama menuju Surabaya dan Jawa Timur.\n\n### Mengapa Memilih Airport Transfer?\n\n**Kepastian Harga**: Harga tetap yang sudah disepakati di awal.\n\n**Driver Menunggu di Terminal**: Sopir kami akan standby di area kedatangan.\n\n### Area Layanan\n\n- Surabaya Pusat — 30-45 menit\n- Surabaya Barat/Timur — 40-60 menit\n- Sidoarjo — 15-25 menit\n- Malang — 2-3 jam\n\n### Cara Booking\n\n1. Hubungi admin kami via WhatsApp\n2. Informasikan nomor penerbangan dan jam kedatangan\n3. Tentukan tujuan drop-off\n4. Konfirmasi pembayaran`,
+      content: `## Airport Transfer Bandara Juanda\n\nBandara Internasional Juanda adalah pintu gerbang utama menuju Surabaya dan Jawa Timur.\n\n### Mengapa Memilih Airport Transfer?\n\n**Kepastian Harga**: Harga tetap yang sudah disepakati di awal.\n\n**Driver Menunggu di Terminal**: Driver kami akan standby di area kedatangan.\n\n### Area Layanan\n\n- Surabaya Pusat — 30-45 menit\n- Surabaya Barat/Timur — 40-60 menit\n- Sidoarjo — 15-25 menit\n- Malang — 2-3 jam\n\n### Cara Booking\n\n1. Hubungi admin kami via WhatsApp\n2. Informasikan nomor penerbangan dan jam kedatangan\n3. Tentukan tujuan drop-off\n4. Konfirmasi pembayaran`,
       cover: "/images/with-driver3.jpeg",
       author: "Admin Juragan",
       readTime: "4 menit",
@@ -262,13 +262,13 @@ async function main() {
     },
     {
       src: "/images/with-driver.jpeg",
-      alt: "Layanan Dengan Sopir Premium",
+      alt: "Layanan Dengan Driver Premium",
       catId: catLayanan.id,
-      title: "Sopir Premium Siap Melayani",
+      title: "Driver Premium Siap Melayani",
     },
     {
       src: "/images/with-driver2.jpeg",
-      alt: "Sopir Profesional Juragan Rental",
+      alt: "Driver Profesional Juragan Rental",
       catId: catLayanan.id,
       title: "Driver Profesional Juragan Rental Surabaya",
     },
@@ -286,7 +286,7 @@ async function main() {
     },
     {
       src: "/images/with-driver5.jpeg",
-      alt: "Sopir Ramah dan Berpengalaman",
+      alt: "Driver Ramah dan Berpengalaman",
       catId: catLayanan.id,
       title: "Driver Ramah dan Berpengalaman",
     },
@@ -458,7 +458,7 @@ async function main() {
       role: "Direktur Bisnis",
       initials: "BP",
       content:
-        "Sopirnya sangat sopan dan hafal jalan pintas di Surabaya. Mobilnya bersih sekali, perjalanan bisnis saya jadi sangat lancar. Sangat direkomendasikan!",
+        "Drivernya sangat sopan dan hafal jalan pintas di Surabaya. Mobilnya bersih sekali, perjalanan bisnis saya jadi sangat lancar. Sangat direkomendasikan!",
       rating: 5,
       featured: true,
     },

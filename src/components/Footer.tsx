@@ -90,24 +90,21 @@ export default function Footer() {
           </h3>
           <ul className="space-y-4">
             <li className="flex gap-3 text-gray-600 font-medium items-start">
-              <span className="material-symbols-outlined text-primary mt-0.5">
-                location_on
-              </span>
-              <span>
-                Jl. Medokan Sawah Timur IX C, Medokan Ayu
-                <br />
-                Kec. Rangkut, Surabaya
-              </span>
-            </li>
-            <li className="flex gap-3 text-gray-600 font-medium items-start">
-              <span className="material-symbols-outlined text-primary mt-0.5">
-                location_on
-              </span>
-              <span>
-                Jl. H. Anwar Hamza, Kp. Baru Tambak Oso Waru
-                <br />
-                Tambakoso, Sidoarjo
-              </span>
+              <a
+                href="https://www.google.com/maps/place/Agen+Sewa+mobil+juragan+rent+car+nusantara/@-7.349288,112.804681,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd7e50036793ff9:0x38c01f6fa48b409f!8m2!3d-7.349288!4d112.804681!16s%2Fg%2F11ysxn972p!5m1!1e1!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex justify-center gap-4"
+              >
+                <span className="material-symbols-outlined text-primary mt-0.5">
+                  location_on
+                </span>
+                <span>
+                  Gg. Ikan Hiu I, Kp. Baru, Tambakoso,
+                  <br />
+                  Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256
+                </span>
+              </a>
             </li>
             <li className="flex gap-3 text-gray-600 font-medium items-center">
               <span className="material-symbols-outlined text-primary">

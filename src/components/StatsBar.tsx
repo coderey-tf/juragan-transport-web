@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useTransform, animate, motion } from "framer-motion";
+import {
+  useInView,
+  useMotionValue,
+  useTransform,
+  animate,
+  motion,
+} from "framer-motion";
 
 function AnimatedCounter({
   from = 0,
@@ -60,7 +66,7 @@ export default function StatsBar() {
             <AnimatedCounter to={100} suffix="%" />
           </span>
           <p className="text-on-surface-variant font-medium mt-2">
-            Sopir Profesional
+            Driver Profesional
           </p>
         </div>
         <div className="flex flex-col items-center text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">

@@ -37,7 +37,7 @@ export default function KeunggulanSection() {
               </span>
             </div>
             <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-headline mb-2 md:mb-3 text-white group-hover:text-blue-100 transition-colors">
-              Sopir Profesional
+              Driver Profesional
             </h3>
             <p className="text-blue-100/80 text-xs md:text-sm lg:text-base leading-relaxed">
               Tim driver kami terlatih secara berkala, ramah, dan
@@ -74,8 +74,8 @@ export default function KeunggulanSection() {
               Harga Jujur
             </h3>
             <p className="text-blue-100/80 text-xs md:text-sm lg:text-base leading-relaxed">
-              Sistem transparan tanpa embel-embel biaya *hidden
-              fee* atau tip tersembunyi. Tertulis rapi di awal.
+              Sistem transparan tanpa embel-embel biaya *hidden fee* atau tip
+              tersembunyi. Tertulis rapi di awal.
             </p>
           </div>
           <div
@@ -91,8 +91,8 @@ export default function KeunggulanSection() {
               Layanan 24/7
             </h3>
             <p className="text-blue-100/80 text-xs md:text-sm lg:text-base leading-relaxed">
-              Urusan mendadak tengah malam? Tim admin responsif menjawab
-              sapaan Anda kapan pun via chat WA.
+              Urusan mendadak tengah malam? Tim admin responsif menjawab sapaan
+              Anda kapan pun via chat WA.
             </p>
           </div>
         </div>

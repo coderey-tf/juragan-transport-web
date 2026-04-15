@@ -40,7 +40,7 @@ export default function HeroSection() {
         <div className="text-white space-y-4 md:space-y-6 text-center lg:text-left mt-6 lg:mt-0">
           <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold font-headline leading-[1.2] lg:leading-[1.15] tracking-tight drop-shadow-lg max-w-2xl mx-auto lg:mx-0">
             Perjalanan Nyaman <br className="hidden xl:block" />
-            Bersama <span className="text-secondary">Sopir Profesional</span>
+            Bersama <span className="text-secondary">Driver Profesional</span>
           </h1>
           <p className="text-base md:text-lg text-white/95 max-w-xl mx-auto lg:mx-0 font-body leading-relaxed drop-shadow-md">
             Layanan Rent Car &amp; Driver terpercaya di Surabaya. Nikmati

@@ -24,7 +24,7 @@ export const ARTICLES: Article[] = [
     content: `
 ## Mengapa Sewa Mobil di Surabaya?
 
-Surabaya sebagai kota metropolitan terbesar kedua di Indonesia memiliki mobilitas tinggi. Baik untuk keperluan bisnis maupun wisata, menyewa mobil dengan sopir profesional adalah pilihan cerdas.
+Surabaya sebagai kota metropolitan terbesar kedua di Indonesia memiliki mobilitas tinggi. Baik untuk keperluan bisnis maupun wisata, menyewa mobil dengan driver profesional adalah pilihan cerdas.
 
 ### 1. Pilih Penyedia Terpercaya
 
@@ -36,7 +36,7 @@ Sebelum berangkat, pastikan kendaraan dalam kondisi prima. Di Juragan Rental, se
 
 ### 3. Konfirmasi Rute dan Jadwal
 
-Komunikasikan rute perjalanan Anda dengan jelas kepada driver. Sopir kami yang berpengalaman akan menyarankan rute tercepat dan terhindari dari kemacetan.
+Komunikasikan rute perjalanan Anda dengan jelas kepada driver. Driver kami yang berpengalaman akan menyarankan rute tercepat dan terhindari dari kemacetan.
 
 ### 4. Pahami Sistem Pembayaran
 
@@ -56,7 +56,7 @@ Untuk mendapatkan unit terbaik, disarankan melakukan pemesanan minimal 1-2 hari 
 
 ---
 
-*Tertarik menyewa mobil di Surabaya? Hubungi Juragan Rental Surabaya sekarang juga dan nikmati perjalanan nyaman bersama sopir profesional!*
+*Tertarik menyewa mobil di Surabaya? Hubungi Juragan Rental Surabaya sekarang juga dan nikmati perjalanan nyaman bersama driver profesional!*
     `,
   },
   {
@@ -102,30 +102,30 @@ Air terjun tertinggi di Pulau Jawa ini terletak di Probolinggo. Sering disebut s
     `,
   },
   {
-    slug: "keuntungan-sewa-mobil-dengan-sopir",
-    title: "Keuntungan Sewa Mobil dengan Sopir vs Self-Drive di Surabaya",
+    slug: "keuntungan-sewa-mobil-dengan-driver",
+    title: "Keuntungan Sewa Mobil dengan Driver vs Self-Drive di Surabaya",
     excerpt:
-      "Bingung memilih antara sewa mobil dengan sopir atau menyetir sendiri? Simak perbandingan lengkapnya di artikel ini.",
+      "Bingung memilih antara sewa mobil dengan driver atau menyetir sendiri? Simak perbandingan lengkapnya di artikel ini.",
     cover: "/images/with-driver2.jpeg",
     date: "2026-04-01",
     author: "Admin Juragan",
     category: "Informasi",
     readTime: "4 menit",
     content: `
-## Sewa dengan Sopir atau Self-Drive?
+## Sewa dengan Driver atau Self-Drive?
 
-Ketika merencanakan perjalanan di Surabaya, salah satu pertimbangan penting adalah apakah Anda akan menyetir sendiri atau menggunakan jasa sopir. Mari kita bahas kelebihan masing-masing.
+Ketika merencanakan perjalanan di Surabaya, salah satu pertimbangan penting adalah apakah Anda akan menyetir sendiri atau menggunakan jasa driver. Mari kita bahas kelebihan masing-masing.
 
-### Keuntungan Sewa dengan Sopir
+### Keuntungan Sewa dengan Driver
 
 **1. Bebas Stres di Jalan**
-Anda tidak perlu pusing dengan navigasi dan kemacetan jalur kota Surabaya yang padat. Sopir profesional kami sudah sangat hafal setiap rute.
+Anda tidak perlu pusing dengan navigasi dan kemacetan jalur kota Surabaya yang padat. Driver profesional kami sudah sangat hafal setiap rute.
 
 **2. Lebih Aman**
-Sopir kami terlatih untuk berkendara secara aman dan defensif. Anda bisa fokus pada pekerjaan atau menikmati pemandangan tanpa khawatir.
+Driver kami terlatih untuk berkendara secara aman dan defensif. Anda bisa fokus pada pekerjaan atau menikmati pemandangan tanpa khawatir.
 
 **3. Fleksibilitas Tinggi**
-Perlu berhenti mendadak atau mengubah rute? Tidak masalah! Sopir kami siap menyesuaikan dengan kebutuhan Anda.
+Perlu berhenti mendadak atau mengubah rute? Tidak masalah! Driver kami siap menyesuaikan dengan kebutuhan Anda.
 
 **4. Tidak Perlu Tahu Jalan**
 Sangat cocok untuk Anda yang baru pertama kali ke Surabaya atau tidak familiar dengan jalanan kota.
@@ -139,11 +139,11 @@ Self-drive lebih sesuai jika Anda:
 
 ### Kesimpulan
 
-Untuk mayoritas kebutuhan bisnis dan wisata, **sewa mobil dengan sopir** adalah pilihan terbaik. Anda bisa duduk santai sementara sopir profesional mengantar Anda ke tujuan dengan aman dan nyaman.
+Untuk mayoritas kebutuhan bisnis dan wisata, **sewa mobil dengan driver** adalah pilihan terbaik. Anda bisa duduk santai sementara driver profesional mengantar Anda ke tujuan dengan aman dan nyaman.
 
 ---
 
-*Butuh mobil dengan sopir profesional di Surabaya? Juragan Rental Surabaya siap melayani Anda 24/7!*
+*Butuh mobil dengan driver profesional di Surabaya? Juragan Rental Surabaya siap melayani Anda 24/7!*
     `,
   },
   {
@@ -165,7 +165,7 @@ Bandara Internasional Juanda adalah pintu gerbang utama menuju Surabaya dan Jawa
 
 **Kepastian Harga**: Berbeda dengan taksi atau ojol yang harganya fluktuatif saat jam sibuk, layanan airport transfer kami menawarkan harga tetap yang sudah disepakati di awal.
 
-**Driver Menunggu di Terminal**: Sopir kami akan standby di area kedatangan dengan papan nama Anda. Tidak perlu repot mencari transportasi di tengah keramaian bandara.
+**Driver Menunggu di Terminal**: Driver kami akan standby di area kedatangan dengan papan nama Anda. Tidak perlu repot mencari transportasi di tengah keramaian bandara.
 
 **Kendaraan Premium**: Anda akan dijemput dengan unit bersih dan terawat, bukan kendaraan sembarangan.
 
