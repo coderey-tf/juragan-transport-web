@@ -11,7 +11,8 @@
     "db:studio": "npx prisma studio",
     "db:migrate": "npx prisma migrate deploy",
     "db:reset": "npx prisma migrate reset",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "postbuild": "next-sitemap"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -23,6 +24,7 @@
     "framer-motion": "^12.38.0",
     "mariadb": "^3.5.2",
     "next": "16.2.2",
+    "next-sitemap": "^4.2.3",
     "prisma": "^7.7.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"

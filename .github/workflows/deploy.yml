@@ -62,6 +62,7 @@ jobs:
             npm install -g pnpm
             pnpm install 
             pnpm build
+            pnpm postbuild
             # Migrate Database
             pnpm run db:migrate
             

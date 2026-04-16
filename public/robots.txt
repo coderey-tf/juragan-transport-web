@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://juraganrentalsurabaya.com
+
+# Sitemaps
+Sitemap: https://juraganrentalsurabaya.com/sitemap.xml
