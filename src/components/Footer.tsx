@@ -116,7 +116,7 @@ export default function Footer() {
               <span className="material-symbols-outlined text-primary">
                 mail
               </span>
-              halo@juraganrentalsurabaya.com
+              <span dangerouslySetInnerHTML={{ __html: '<!--email_off-->halo@juraganrentalsurabaya.com<!--/email_off-->' }} />
             </li>
           </ul>
         </div>
