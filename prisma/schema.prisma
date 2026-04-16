@@ -228,3 +228,17 @@ model MediaImage {
   fleets    Fleet[]       @relation("FleetImage")
   galleries GalleryItem[] @relation("GalleryImage")
 }
+
+// ──────────────────────────────────────────────
+// WhatsApp Click Tracker
+// ──────────────────────────────────────────────
+model WaTracker {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  
+  source    String   // e.g., "hero", "navbar", "floating", "article"
+  message   String?  @db.Text // The text parameter sent
+  ip        String?  // Client IP address
+  userAgent String?  @db.Text // Client User-Agent
+  referer   String?  @db.Text // Which page they clicked from
+}

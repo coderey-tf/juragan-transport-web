@@ -19,7 +19,7 @@ export default function HeroSection() {
     const message = `Halo Admin Juragan Rental,\n\nSaya tertarik untuk Booking Kendaraan dengan rincian berikut:\n\n Nama           : ${name}\n Tgl Berangkat  : ${departure || "-"}\n Tgl Kembali    : ${returnDate || "-"}\n Armada         : ${armada || "Belum Menentukan"}\n Jenis Layanan  : ${service || "-"}\n\nMohon informasi ketersediaan unit dan estimasi biayanya ya. Terima kasih!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/6282132213259?text=${encodedMessage}`;
+    const whatsappUrl = `/api/wa?source=hero_form&text=${encodedMessage}`;
 
     window.open(whatsappUrl, "_blank");
   };
@@ -58,7 +58,7 @@ export default function HeroSection() {
               </span>
             </a>
             <a
-              href="https://wa.me/6282132213259?text=Halo%20Admin%20Juragan%20Rental%2C%0A%0ASaya%20tertarik%20untuk%20Booking%20Kendaraan%20dengan%20rincian%20berikut%3A%0A%0A%20Nama%20%20%20%20%20%20%20%20%20%20%20%3A%20%0A%20Tgl%20Berangkat%20%20%3A%20%0A%20Tgl%20Kembali%20%20%20%20%3A%20%0A%20Armada%20%20%20%20%20%20%20%20%20%3A%20%0A%20Jenis%20Layanan%20%20%3A%20%0A%0AMohon%20informasi%20ketersediaan%20unit%20dan%20estimasi%20biayanya%20ya.%20Terima%20kasih!"
+              href="/api/wa?source=hero_button_outline&text=Halo%20Admin%20Juragan%20Rental%2C%0A%0ASaya%20tertarik%20untuk%20Booking%20Kendaraan%20dengan%20rincian%20berikut%3A%0A%0A%20Nama%20%20%20%20%20%20%20%20%20%20%20%3A%20%0A%20Tgl%20Berangkat%20%20%3A%20%0A%20Tgl%20Kembali%20%20%20%20%3A%20%0A%20Armada%20%20%20%20%20%20%20%20%20%3A%20%0A%20Jenis%20Layanan%20%20%3A%20%0A%0AMohon%20informasi%20ketersediaan%20unit%20dan%20estimasi%20biayanya%20ya.%20Terima%20kasih!"
               aria-label="Hubungi via WhatsApp"
               target="_blank"
               className="bg-gradient-to-r from-[#25D366] to-[#1DA851] text-white px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:-translate-y-0.5 shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300"
