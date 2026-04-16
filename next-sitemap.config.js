@@ -5,4 +5,14 @@ module.exports = {
   sitemapSize: 5000, // optional, jumlah URL per sitemap file
   changefreq: "daily", // optional
   priority: 0.7, // optional
+  exclude: ['/dashboard', '/dashboard/*'],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/dashboard', '/dashboard/*'],
+      },
+    ],
+  },
 };
