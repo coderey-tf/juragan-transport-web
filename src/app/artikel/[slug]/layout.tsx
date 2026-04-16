@@ -23,7 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: article.title,
       description: article.excerpt,
+      url: `https://juraganrentalsurabaya.com/artikel/${slug}`,
       images: [article.cover],
+      type: "article",
     },
   };
 }

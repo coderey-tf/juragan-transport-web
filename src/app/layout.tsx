@@ -16,6 +16,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://juraganrentalsurabaya.com"),
   title: "Juragan Rental Surabaya | Sewa Mobil & Driver Premium",
   description:
     "Layanan sewa mobil dan driver profesional terpercaya di Surabaya. Nikmati kenyamanan eksklusif untuk kebutuhan bisnis, wisata, dan perjalanan dinas Anda.",
