@@ -31,7 +31,6 @@ export default function HeroSection() {
           className="object-cover"
           src="/images/team-juragan2.jpeg"
           fill
-          priority
           sizes="100vw"
         />
         <div className="absolute inset-0 hero-gradient"></div>
