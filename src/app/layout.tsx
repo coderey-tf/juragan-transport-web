@@ -40,7 +40,8 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
     >
       <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="PlwrS0owkpYy9nbNzrW93w" async></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="preload"
