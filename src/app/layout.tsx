@@ -17,14 +17,15 @@ const beVietnamPro = Be_Vietnam_Pro({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://juraganrentalsurabaya.com"),
-  title: "Juragan Rental Surabaya | Sewa Mobil & Driver Premium",
+  title: "Rental Mobil Surabaya dengan Sopir | Juragan Rental Surabaya",
   description:
-    "Layanan sewa mobil dan driver profesional terpercaya di Surabaya. Nikmati kenyamanan eksklusif untuk kebutuhan bisnis, wisata, dan perjalanan dinas Anda.",
+    "Sewa mobil Surabaya dengan sopir untuk perjalanan dinas, wisata, drop-off luar kota, dan antar jemput Juanda. Layanan 24 jam, armada lengkap, admin responsif.",
   keywords:
     "sewa mobil surabaya, rent car surabaya, sewa innova zenix surabaya, sewa alphard surabaya, sewa mobil driver surabaya, rental mobil terpercaya",
   openGraph: {
-    title: "Juragan Rental Surabaya",
-    description: "Perjalanan Nyaman Bersama Driver Profesional di Surabaya.",
+    title: "Rental Mobil Surabaya dengan Sopir | Juragan Rental Surabaya",
+    description:
+      "Sewa mobil Surabaya dengan sopir untuk perjalanan dinas, wisata, drop-off luar kota, dan antar jemput Juanda. Layanan 24 jam, armada lengkap, admin responsif.",
     locale: "id_ID",
     type: "website",
   },

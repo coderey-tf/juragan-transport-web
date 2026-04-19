@@ -1,19 +1,29 @@
 import { Metadata } from "next";
-import { ARTICLES } from "@/data/articles";
+import prisma from "@/lib/prisma";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-  return ARTICLES.map((article) => ({
+  const data = await prisma.article.findMany({
+    where: {
+      published: true,
+    },
+  });
+  return data.map((article) => ({
     slug: article.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const article = ARTICLES.find((a) => a.slug === slug);
+  const article = await prisma.article.findUnique({
+    where: { slug },
+    include: {
+      category: { select: { name: true } },
+    },
+  });
   if (!article) {
     return { title: "Artikel Tidak Ditemukan" };
   }
