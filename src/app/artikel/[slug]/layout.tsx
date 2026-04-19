@@ -6,14 +6,19 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const data = await prisma.article.findMany({
-    where: {
-      published: true,
-    },
-  });
-  return data.map((article) => ({
-    slug: article.slug,
-  }));
+  try {
+    const data = await prisma.article.findMany({
+      where: {
+        published: true,
+      },
+    });
+    return data.map((article) => ({
+      slug: article.slug,
+    }));
+  } catch (error) {
+    console.warn("Skipping static params generation for articles due to database error:", error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
