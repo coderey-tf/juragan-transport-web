@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main # Jalankan otomatis pada saat push ke branch main
+      - main
 
 jobs:
   deploy:
@@ -21,7 +21,7 @@ jobs:
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8 # atau v10 sesuai yang Anda gunakan
+          version: 10
 
       - name: 📦 Install Dependencies
         run: pnpm install
@@ -29,10 +29,10 @@ jobs:
       - name: 🏗️ Build Next.js
         run: pnpm build
         env:
-          DATABASE_URL: "mysql://dummy:dummy@127.0.0.1:3306/dummy"
+          DATABASE_URL: "postgresql://postgres.ybksxjejwberpzhrawzy:YtKCGNxx7OMyKMjn@aws-0-ap-southeast-2.pooler.supabase.com:6543/postgres?pgbouncer=true"
 
       - name: 🗜️ Compress Build Files
-        run: tar -czf deploy.tar.gz .next public src package.json pnpm-lock.yaml pnpm-workspace.yaml prisma next.config.ts tsconfig.json postcss.config.mjs prisma.config.ts
+        run: tar -czf deploy.tar.gz .next public src package.json pnpm-lock.yaml pnpm-workspace.yaml prisma next.config.ts next-sitemap.config.js ecosystem.config.js .npmrc tsconfig.json postcss.config.mjs prisma.config.ts
 
       - name: 📤 Upload Build to VPS
         uses: appleboy/scp-action@v0.1.7
@@ -60,12 +60,9 @@ jobs:
             
             # Install modul untuk production & generate prisma
             npm install -g pnpm
-            pnpm install 
-            pnpm build
-            pnpm postbuild
-            # Migrate Database
-            pnpm run db:migrate
+            pnpm install --ignore-scripts || pnpm install
+            pnpm postbuild || echo "postbuild skipped"
             
-            # Restart PM2 atau Start jika belum ada
-            pm2 restart juragan-web || pm2 start "pnpm start" --name "juragan-web"
+            # Restart PM2 dengan ecosystem.config.js
+            pm2 restart ecosystem.config.js --update-env || pm2 start ecosystem.config.js
             pm2 save
