@@ -1,24 +1,13 @@
-//prisma.ts
 import { PrismaClient } from "@prisma/client";
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
 function createPrismaClient() {
-  const url = new URL(process.env.DATABASE_URL!);
-
-  const adapter = new PrismaMariaDb({
-    host: url.hostname,
-    port: Number(url.port || 3306),
-    user: decodeURIComponent(url.username),
-    password: decodeURIComponent(url.password),
-    database: url.pathname.replace(/^\//, ""),
-    connectionLimit: 5,
-    connectTimeout: 5_000,
-    acquireTimeout: 10_000,
-    idleTimeout: 300,
+  const adapter = new PrismaPg({
+    connectionString: process.env.DATABASE_URL,
   });
   return new PrismaClient({ adapter });
 }
