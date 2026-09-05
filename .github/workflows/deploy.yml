@@ -24,6 +24,7 @@ jobs:
 
       - name: Validate install + prisma generate + build
         run: |
+          pnpm approve-builds --all
           pnpm install
           pnpm build
         env:
@@ -69,6 +70,7 @@ jobs:
             command -v pnpm >/dev/null 2>&1 || npm install -g pnpm
             echo "enable-pre-post-scripts=true" > .npmrc
             echo "dangerouslyAllowAllBuilds=true" >> .npmrc
+            pnpm approve-builds --all
             pnpm install --frozen-lockfile
             pnpm exec prisma generate
             pnpm build
