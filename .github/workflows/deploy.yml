@@ -22,11 +22,14 @@ jobs:
         with:
           version: 11
 
-      - name: Validate install + prisma generate + build
-        run: |
-          pnpm approve-builds --all
-          pnpm install
-          pnpm build
+      - name: Install deps (skip build scripts)
+        run: pnpm install --ignore-scripts
+
+      - name: Generate Prisma Client
+        run: pnpm exec prisma generate
+
+      - name: Build Next.js
+        run: pnpm build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
@@ -68,10 +71,7 @@ jobs:
             rsync -av --delete --exclude=node_modules --exclude=.next --exclude=.env ./ /var/www/juragan-transport/
             cd /var/www/juragan-transport
             command -v pnpm >/dev/null 2>&1 || npm install -g pnpm
-            echo "enable-pre-post-scripts=true" > .npmrc
-            echo "dangerouslyAllowAllBuilds=true" >> .npmrc
-            pnpm approve-builds --all
-            pnpm install --frozen-lockfile
+            pnpm install --ignore-scripts
             pnpm exec prisma generate
             pnpm build
             pm2 restart ecosystem.config.js --update-env || pm2 start ecosystem.config.js
