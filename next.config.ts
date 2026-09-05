@@ -60,21 +60,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "www.juraganrentalsurabaya.com",
-          },
-        ],
-        destination: "https://juraganrentalsurabaya.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
