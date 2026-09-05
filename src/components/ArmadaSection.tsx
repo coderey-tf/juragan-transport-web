@@ -2,10 +2,15 @@ import Image from "next/image";
 import prisma from "@/lib/prisma";
 
 export default async function ArmadaSection() {
-  const fleets = await prisma.fleet.findMany({
-    where: { active: true },
-    orderBy: { sortOrder: "asc" },
-  });
+  let fleets: any[] = [];
+  try {
+    fleets = await prisma.fleet.findMany({
+      where: { active: true },
+      orderBy: { sortOrder: "asc" },
+    });
+  } catch (e) {
+    console.error("ArmadaSection prisma error:", e);
+  }
 
   return (
     <section className="py-16 md:py-24 bg-surface-container-low" id="armada">

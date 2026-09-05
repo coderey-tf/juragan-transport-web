@@ -8,13 +8,18 @@ import prisma from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export default async function ArtikelPage() {
-  const articles = await prisma.article.findMany({
+  let articles: any[] = [];
+  try {
+    articles = await prisma.article.findMany({
     where: { published: true },
     orderBy: { publishedAt: "desc" },
     include: {
       category: { select: { name: true } },
     },
-  });
+    });
+  } catch (e) {
+    console.error('ArtikelPage prisma error:', e);
+  }
 
   if (articles.length === 0) {
     return (

@@ -8,10 +8,15 @@ import prisma from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export default async function GaleriPage() {
-  const items = await prisma.galleryItem.findMany({
+  let items: any[] = [];
+  try {
+    items = await prisma.galleryItem.findMany({
     orderBy: { sortOrder: "asc" },
     include: { category: { select: { name: true } } },
-  });
+    });
+  } catch (e) {
+    console.error('GaleriPage prisma error:', e);
+  }
 
   const categoryNames = [...new Set(items.map((g) => g.category.name))];
 

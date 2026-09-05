@@ -15,39 +15,55 @@ type Props = {
 export default async function ArtikelDetailPage({ params }: Props) {
   const { slug } = await params;
 
-  const article = await prisma.article.findUnique({
-    where: { slug },
-    include: {
-      category: { select: { id: true, name: true } },
-    },
-  });
+  let article: any = null;
+  try {
+    article = await prisma.article.findUnique({
+      where: { slug },
+      include: {
+        category: { select: { id: true, name: true } },
+      },
+    });
+  } catch (e) {
+    console.error("ArtikelDetail prisma error:", e);
+    notFound();
+  }
 
   if (!article) {
     notFound();
   }
+  const a = article as any;
 
   // Find related articles (same category, exclude current)
-  const related = await prisma.article.findMany({
-    where: {
-      published: true,
-      categoryId: article.categoryId,
-      slug: { not: article.slug },
-    },
-    take: 2,
-    orderBy: { publishedAt: "desc" },
-    include: { category: { select: { name: true } } },
-  });
+  let related: any[] = [];
+  try {
+    related = await prisma.article.findMany({
+      where: {
+        published: true,
+        categoryId: a.categoryId,
+        slug: { not: a.slug },
+      },
+      take: 2,
+      orderBy: { publishedAt: "desc" },
+      include: { category: { select: { name: true } } },
+    });
+  } catch (e) {
+    console.error("ArtikelDetail related prisma error:", e);
+  }
 
   // Fallback: if no related in same category, just pick others
-  const relatedArticles =
-    related.length > 0
-      ? related
-      : await prisma.article.findMany({
-          where: { published: true, slug: { not: article.slug } },
-          take: 2,
-          orderBy: { publishedAt: "desc" },
-          include: { category: { select: { name: true } } },
-        });
+  let relatedArticles = related;
+  if (relatedArticles.length === 0) {
+    try {
+      relatedArticles = await prisma.article.findMany({
+        where: { published: true, slug: { not: a.slug } },
+        take: 2,
+        orderBy: { publishedAt: "desc" },
+        include: { category: { select: { name: true } } },
+      });
+    } catch (e) {
+      console.error("ArtikelDetail fallback prisma error:", e);
+    }
+  }
 
   // Simple markdown-like rendering for content
   const renderContent = (content: string) => {
@@ -117,8 +133,8 @@ export default async function ArtikelDetailPage({ params }: Props) {
       <section className="relative pt-24 md:pt-28">
         <div className="relative w-full aspect-[21/9] md:aspect-[21/7] max-h-[480px]">
           <Image
-            src={article.cover}
-            alt={article.title}
+            src={a.cover}
+            alt={a.title}
             fill
             priority
             sizes="100vw"
@@ -128,17 +144,17 @@ export default async function ArtikelDetailPage({ params }: Props) {
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-4">
               <span className="bg-secondary text-black font-extrabold text-xs px-4 py-2 rounded-full shadow-md">
-                {article.category.name}
+                {a.category.name}
               </span>
               <span className="text-white/70 text-sm flex items-center gap-1">
                 <span className="material-symbols-outlined text-sm">
                   schedule
                 </span>
-                {article.readTime} baca
+                {a.readTime} baca
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline text-white leading-tight drop-shadow-lg">
-              {article.title}
+              {a.title}
             </h1>
           </div>
         </div>
@@ -155,10 +171,10 @@ export default async function ArtikelDetailPage({ params }: Props) {
               </span>
             </div>
             <div>
-              <p className="font-bold text-on-surface">{article.author}</p>
+              <p className="font-bold text-on-surface">{a.author}</p>
               <p className="text-sm text-on-surface-variant">
-                {article.publishedAt
-                  ? new Date(article.publishedAt).toLocaleDateString("id-ID", {
+                {a.publishedAt
+                  ? new Date(a.publishedAt).toLocaleDateString("id-ID", {
                       weekday: "long",
                       day: "numeric",
                       month: "long",
@@ -179,7 +195,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
 
           {/* Content */}
           <article className="prose-custom space-y-1">
-            {renderContent(article.content)}
+            {renderContent(a.content)}
           </article>
 
           {/* Share CTA */}
