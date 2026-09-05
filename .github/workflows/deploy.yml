@@ -8,33 +8,41 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: ⬇️ Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 11
 
-      - name: 📦 Install Dependencies
-        run: pnpm install
-
-      - name: 🏗️ Build Next.js
-        run: pnpm build
+      - name: Validate install + prisma generate + build
+        run: |
+          pnpm install
+          pnpm build
         env:
-          DATABASE_URL: "postgresql://postgres.ybksxjejwberpzhrawzy:YtKCGNxx7OMyKMjn@aws-0-ap-southeast-2.pooler.supabase.com:6543/postgres?pgbouncer=true"
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+          CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
 
-      - name: 🗜️ Compress Build Files
-        run: tar -czf deploy.tar.gz .next public src package.json pnpm-lock.yaml pnpm-workspace.yaml prisma next.config.ts next-sitemap.config.js ecosystem.config.js .npmrc tsconfig.json postcss.config.mjs prisma.config.ts
+      - name: Compress source for VPS build
+        run: |
+          tar -czf deploy.tar.gz \
+            --exclude=.git --exclude=node_modules --exclude=.next --exclude='*.log' \
+            src public prisma package.json pnpm-lock.yaml pnpm-workspace.yaml \
+            next.config.ts next-sitemap.config.js ecosystem.config.js .npmrc \
+            tsconfig.json postcss.config.mjs prisma.config.ts
 
-      - name: 📤 Upload Build to VPS
+      - name: Upload to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -42,9 +50,9 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
           source: "deploy.tar.gz"
-          target: "/var/www/juragan-transport"
+          target: "/tmp/juragan-deploy"
 
-      - name: 🚀 Deploy & Restart PM2
+      - name: Deploy and Restart PM2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -52,17 +60,20 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
+            set -e
+            mkdir -p /tmp/juragan-deploy
+            cd /tmp/juragan-deploy
+            [ -f deploy.tar.gz ] && tar -xzf deploy.tar.gz && rm deploy.tar.gz
+            rsync -av --delete --exclude=node_modules --exclude=.next --exclude=.env ./ /var/www/juragan-transport/
             cd /var/www/juragan-transport
-            
-            # Ekstrak file build
-            tar -xzf deploy.tar.gz
-            rm deploy.tar.gz
-            
-            # Install modul untuk production & generate prisma
-            npm install -g pnpm
-            pnpm install --ignore-scripts || pnpm install
-            pnpm postbuild || echo "postbuild skipped"
-            
-            # Restart PM2 dengan ecosystem.config.js
+            command -v pnpm >/dev/null 2>&1 || npm install -g pnpm
+            echo "enable-pre-post-scripts=true" > .npmrc
+            echo "dangerouslyAllowAllBuilds=true" >> .npmrc
+            pnpm install --frozen-lockfile
+            pnpm exec prisma generate
+            pnpm build
             pm2 restart ecosystem.config.js --update-env || pm2 start ecosystem.config.js
             pm2 save
+            sleep 3
+            curl -sf http://localhost:3002/ >/dev/null && echo "200 OK deploy success" || (pm2 logs juragan-web --lines 50 --nostream; exit 1)
+            rm -rf /tmp/juragan-deploy
